@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+
+print ("\n\t***Reordenar 32 bits de la derecha, uso de E***")
+print ("\n\t\t\tRespuesta: 1 byte")
+
+def R_expand(D):
+    D.insert(0,0)
+    nD = []
+    for i in E:
+        nD.append(D[i])
+    return nD

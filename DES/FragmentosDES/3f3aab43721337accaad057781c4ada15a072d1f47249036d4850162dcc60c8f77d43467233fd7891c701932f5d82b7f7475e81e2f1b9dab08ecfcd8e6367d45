@@ -1,0 +1,17 @@
+#!/usr/bin/python3
+
+print ("\n\t\t\t***Uso la matriz S***")
+print ("\n\t\t\t   Respuesta: 1974")
+
+def Sustitucion_S(rxor):
+    rs = []
+    ln = [rxor[i:i+6] for i in range(0,len(rxor),6)] #Dividirla en 8 partes de 6 bits
+    for i in range (0,8):
+        a = str(ln[i][0])
+        a += str(ln[i][-1])
+        x = int(str(a),2)
+        b = ''.join(str(i) for i in ln[i][1:5])
+        y = int(str(b),2)
+        rs.append(bin(S[i][x][y])[2::].zfill(4))
+    rs = list(''.join(rs))
+    return rs

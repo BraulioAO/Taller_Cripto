@@ -1,0 +1,10 @@
+#!/usr/bin/python3
+
+print ("\n\t***Primera parte para generación de 16 subclaves***")
+print ("\n\t\t\tRespuesta: 64 bits")
+
+def subclaves(clave,n):
+    subclave = clave[n:]
+    for i in range(0,n):
+        subclave.append(clave[i])
+    return subclave

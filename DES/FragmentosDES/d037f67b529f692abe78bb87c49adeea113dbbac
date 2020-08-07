@@ -1,0 +1,13 @@
+#!/usr/bin/python3
+
+print ("\n\t\t***Reordenar clave a 56 bits***")
+print ("\n\t\t\tRespuesta: 64 bits")
+
+def PC1(clave):
+    clave.insert(0,0)
+    CD = []
+    for i in PC_1:
+        CD.append(int(clave[i]))
+    C = CD[:28]
+    D = CD[28:]
+    return C,D 

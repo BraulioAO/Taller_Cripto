@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+
+print ("\n\t***Tercera parte para generación de 16 subclaves***")
+print ("\n\t\t\tRespuesta: lucifer")
+
+def generacion_subclaves(clave):
+    C,D = PC1(clave)
+    nc = []
+    nd = []
+    nsubclave = []
+    nc.append(C)
+    nd.append(D)
+    for i in LeftShifts:
+        nc.append(subclaves(nc[-1],i))
+        nd.append(subclaves(nd[-1],i))
+    
+    #Para PC2
+    nc.remove(C)
+    nd.remove(D)
+    for i in range(len(nc)):
+        nsubclave.append(PC2(nc[i],nd[i]))
+    return nsubclave

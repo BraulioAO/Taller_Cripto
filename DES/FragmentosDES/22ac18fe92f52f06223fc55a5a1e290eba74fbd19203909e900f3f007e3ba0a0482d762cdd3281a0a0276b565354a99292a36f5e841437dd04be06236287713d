@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+
+print ("\n\t***Reordenar el mensaje y separación en 32 bits***")
+print ("\n\t\t\tRespuesta: 16 subclaves")
+
+def mensaje_bin():
+    #texto = opcion.encode('utf-8')
+    #hexadecimal = texto.hex()
+    hexadecimal = "0123456789ABCDEF" 
+    texto_bin = bin(int(hexadecimal,16))[2::].zfill(64)
+    texto_bin = ''.join(texto_bin)
+    return list(texto_bin)
+
+def IP (mensaje):
+    mensaje.insert(0,0)
+    ID = []
+    for i in IP1:
+        ID.append(int(mensaje[i])) 
+        I = ID[:32]
+        D = ID[32:]
+    return I,D

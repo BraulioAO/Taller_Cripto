@@ -1,0 +1,12 @@
+#!/usr/bin/python3
+
+print ("\n\t***Segunda parte para generación de 16 subclaves***")
+print ("\n\t\t\tRespuesta: 56 bits")
+
+def PC2(C,D):
+    clave = C+D
+    clave.insert(0,0)
+    nclave = []
+    for i in PC_2:
+        nclave.append(clave[i])
+    return nclave 

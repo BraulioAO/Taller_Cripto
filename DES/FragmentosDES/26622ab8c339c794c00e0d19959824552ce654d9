@@ -1,0 +1,24 @@
+#!/usr/bin/python3
+
+print ("\n\t\t\t***Método de descifrado***")
+print ("\n\t\t\t Respuesta: horst feistel")
+
+def descifrado (cifrado):
+    lr = []
+    clave = clave_bin()
+    K = generacion_subclaves(clave)
+    K.reverse()
+    cifrado_bin = bin(int(cifrado,16))[2::].zfill(64)
+    L,R = IP(list(cifrado_bin))
+    lr.append(L)
+    lr.append(R)
+    for i in range (0,16):
+        ff = F(lr[i+1][0:],K[i])
+        lr.append(xor(lr[i],ff))
+    final = IP__1(lr[-1]+lr[-2])
+    a = "".join(str(i) for i in final)
+    mclaro = hex(int(a,2))[2::].zfill(16)
+    return mclaro.upper()
+
+#print(cifrado())
+#print(descifrado(cifrado()))

@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+
+print ("\n\t\t\t***Uso de la matriz P***")
+print ("\n\t\t\t     Respuesta: NIST")
+
+def P(rs):
+	rs.insert(0,0)
+	rp = []
+	for i in P1:
+		rp.append(int(rs[i]))
+	return rp

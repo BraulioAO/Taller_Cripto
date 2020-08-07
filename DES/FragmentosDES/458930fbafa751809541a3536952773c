@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+
+print ("\n\t\t***Creación de función F***")
+print ("\n\t\t    Respuesta: 4 bytes")
+
+def F(R,K):
+    nR = R_expand(R)
+    RK_xor = xor(nR,K)
+    rs = Sustitucion_S(RK_xor)
+    rp = P(rs)
+    return rp

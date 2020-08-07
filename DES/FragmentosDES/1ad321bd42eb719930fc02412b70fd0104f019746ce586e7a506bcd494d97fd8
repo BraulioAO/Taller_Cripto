@@ -1,0 +1,10 @@
+#!/usr/bin/python3
+
+print ("\n\t\t    ***Realización de xor***")
+print ("\n\t\t\tRespuesta: xor")
+
+def xor (a,b):
+    rxor = []
+    for i in range (len(a)):
+        rxor.append(int(a[i])^int(b[i]))
+    return rxor

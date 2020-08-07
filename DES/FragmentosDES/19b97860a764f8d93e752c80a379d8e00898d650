@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+
+print ("\n\t\t***Uso de la matriz IP inversa***")
+print ("\n\t\t\tRespuesta: 28 bits")
+
+def IP__1(ID):
+	ID.insert(0,0)
+	tmp = []
+	for i in IP_1:
+		tmp.append(ID[i])
+	return tmp
