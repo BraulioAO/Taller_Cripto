@@ -1,0 +1,7 @@
+Hola Bob, los datos que usted tendra son:  
+ 
+y = 53 
+clave privada = 23 
+ 
+Comparta el valor de y con tu compañero como se indica en la práctica. 
+Recuerda que la clave privada nunca debe compartirse.

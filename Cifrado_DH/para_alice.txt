@@ -1,0 +1,10 @@
+3d863b367aa379f71c7afc0c9cdca41d 
+ 
+Hola Alice, los datos que usted tendra son:  
+p = 97 
+clave privada = 29 
+ 
+Comparta el valor de p con su compañero como se indique en la práctica. 
+Recuerde que la clave privada jamás se debe compartir.
+                                                                               
+
