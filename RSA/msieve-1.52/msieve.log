@@ -1,0 +1,86 @@
+Mon Jul 20 16:00:27 2020  
+Mon Jul 20 16:00:27 2020  
+Mon Jul 20 16:00:27 2020  Msieve v. 1.52 (SVN Unversioned directory)
+Mon Jul 20 16:00:27 2020  random seeds: 09bd25aa 54dc0e12
+Mon Jul 20 16:00:27 2020  factoring 104157258479560945453624289306177766168091912757237846734465056807148778110081 (78 digits)
+Mon Jul 20 16:00:28 2020  no P-1/P+1/ECM available, skipping
+Mon Jul 20 16:00:28 2020  commencing quadratic sieve (78-digit input)
+Mon Jul 20 16:00:28 2020  using multiplier of 1
+Mon Jul 20 16:00:28 2020  using generic 32kb sieve core
+Mon Jul 20 16:00:28 2020  sieve interval: 12 blocks of size 32768
+Mon Jul 20 16:00:28 2020  processing polynomials in batches of 17
+Mon Jul 20 16:00:28 2020  using a sieve bound of 922079 (36471 primes)
+Mon Jul 20 16:00:28 2020  using large prime bound of 92207900 (26 bits)
+Mon Jul 20 16:00:28 2020  using trial factoring cutoff of 26 bits
+Mon Jul 20 16:00:28 2020  polynomial 'A' values have 10 factors
+Mon Jul 20 16:03:16 2020  36681 relations (19652 full + 17029 combined from 189983 partial), need 36567
+Mon Jul 20 16:03:17 2020  begin with 209635 relations
+Mon Jul 20 16:03:17 2020  reduce to 51664 relations in 2 passes
+Mon Jul 20 16:03:17 2020  attempting to read 51664 relations
+Mon Jul 20 16:03:17 2020  recovered 51664 relations
+Mon Jul 20 16:03:17 2020  recovered 37972 polynomials
+Mon Jul 20 16:03:17 2020  attempting to build 36681 cycles
+Mon Jul 20 16:03:17 2020  found 36681 cycles in 1 passes
+Mon Jul 20 16:03:17 2020  distribution of cycle lengths:
+Mon Jul 20 16:03:17 2020     length 1 : 19652
+Mon Jul 20 16:03:17 2020     length 2 : 17029
+Mon Jul 20 16:03:17 2020  largest cycle: 2 relations
+Mon Jul 20 16:03:17 2020  matrix is 36471 x 36681 (5.3 MB) with weight 1083336 (29.53/col)
+Mon Jul 20 16:03:17 2020  sparse part has weight 1083336 (29.53/col)
+Mon Jul 20 16:03:18 2020  filtering completed in 3 passes
+Mon Jul 20 16:03:18 2020  matrix is 25180 x 25244 (3.9 MB) with weight 833328 (33.01/col)
+Mon Jul 20 16:03:18 2020  sparse part has weight 833328 (33.01/col)
+Mon Jul 20 16:03:18 2020  saving the first 48 matrix rows for later
+Mon Jul 20 16:03:18 2020  matrix includes 64 packed rows
+Mon Jul 20 16:03:18 2020  matrix is 25132 x 25244 (2.6 MB) with weight 605669 (23.99/col)
+Mon Jul 20 16:03:18 2020  sparse part has weight 419699 (16.63/col)
+Mon Jul 20 16:03:18 2020  commencing Lanczos iteration
+Mon Jul 20 16:03:18 2020  memory use: 2.6 MB
+Mon Jul 20 16:03:26 2020  lanczos halted after 399 iterations (dim = 25129)
+Mon Jul 20 16:03:27 2020  recovered 15 nontrivial dependencies
+Mon Jul 20 16:03:27 2020  prp39 factor: 316127286866504058711676143208574235653
+Mon Jul 20 16:03:27 2020  prp39 factor: 329478861227012763905222103914539641677
+Mon Jul 20 16:03:27 2020  elapsed time 00:03:00
+Mon Jul 20 16:17:22 2020  
+Mon Jul 20 16:17:22 2020  
+Mon Jul 20 16:17:22 2020  Msieve v. 1.52 (SVN Unversioned directory)
+Mon Jul 20 16:17:22 2020  random seeds: 47bd6046 bcb35b91
+Mon Jul 20 16:17:22 2020  factoring 80959423555029228167898468955572529461181330215132500310810205135794944266363 (77 digits)
+Mon Jul 20 16:17:23 2020  no P-1/P+1/ECM available, skipping
+Mon Jul 20 16:17:23 2020  commencing quadratic sieve (77-digit input)
+Mon Jul 20 16:17:23 2020  using multiplier of 3
+Mon Jul 20 16:17:23 2020  using generic 32kb sieve core
+Mon Jul 20 16:17:23 2020  sieve interval: 12 blocks of size 32768
+Mon Jul 20 16:17:23 2020  processing polynomials in batches of 17
+Mon Jul 20 16:17:23 2020  using a sieve bound of 922549 (36471 primes)
+Mon Jul 20 16:17:23 2020  using large prime bound of 92254900 (26 bits)
+Mon Jul 20 16:17:23 2020  using trial factoring cutoff of 26 bits
+Mon Jul 20 16:17:23 2020  polynomial 'A' values have 10 factors
+Mon Jul 20 16:22:07 2020  36644 relations (18939 full + 17705 combined from 193957 partial), need 36567
+Mon Jul 20 16:22:08 2020  begin with 212896 relations
+Mon Jul 20 16:22:08 2020  reduce to 52220 relations in 2 passes
+Mon Jul 20 16:22:08 2020  attempting to read 52220 relations
+Mon Jul 20 16:22:08 2020  recovered 52220 relations
+Mon Jul 20 16:22:08 2020  recovered 42454 polynomials
+Mon Jul 20 16:22:08 2020  attempting to build 36644 cycles
+Mon Jul 20 16:22:08 2020  found 36644 cycles in 1 passes
+Mon Jul 20 16:22:08 2020  distribution of cycle lengths:
+Mon Jul 20 16:22:08 2020     length 1 : 18939
+Mon Jul 20 16:22:08 2020     length 2 : 17705
+Mon Jul 20 16:22:08 2020  largest cycle: 2 relations
+Mon Jul 20 16:22:08 2020  matrix is 36471 x 36644 (5.3 MB) with weight 1096235 (29.92/col)
+Mon Jul 20 16:22:08 2020  sparse part has weight 1096235 (29.92/col)
+Mon Jul 20 16:22:09 2020  filtering completed in 3 passes
+Mon Jul 20 16:22:09 2020  matrix is 25914 x 25977 (4.1 MB) with weight 869088 (33.46/col)
+Mon Jul 20 16:22:09 2020  sparse part has weight 869088 (33.46/col)
+Mon Jul 20 16:22:09 2020  saving the first 48 matrix rows for later
+Mon Jul 20 16:22:09 2020  matrix includes 64 packed rows
+Mon Jul 20 16:22:09 2020  matrix is 25866 x 25977 (2.8 MB) with weight 657555 (25.31/col)
+Mon Jul 20 16:22:09 2020  sparse part has weight 485463 (18.69/col)
+Mon Jul 20 16:22:09 2020  commencing Lanczos iteration
+Mon Jul 20 16:22:09 2020  memory use: 2.9 MB
+Mon Jul 20 16:22:19 2020  lanczos halted after 410 iterations (dim = 25864)
+Mon Jul 20 16:22:19 2020  recovered 16 nontrivial dependencies
+Mon Jul 20 16:22:19 2020  prp39 factor: 258698705543553752069815673958187386887
+Mon Jul 20 16:22:19 2020  prp39 factor: 312948699858875552369835278336202624749
+Mon Jul 20 16:22:19 2020  elapsed time 00:04:57
