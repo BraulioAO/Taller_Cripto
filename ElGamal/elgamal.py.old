@@ -1,0 +1,166 @@
+#!/usr/bin/python3
+
+# UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO
+# FACULTAD DE INGENIERÍA
+# TALLER VIRTUAL DE CRIPTOGRAFÍA PRÁCTICA
+# 7. ELGAMAL
+# GÓMEZ FLORES PATRICIA NALLELY
+# LÓPEZ BARRIENTOS MA. JAQUELINA
+
+import random
+import os
+
+dic = {'A':1,'B':2,'C':3,'D':4,'E':5,'F':6,'G':7,'H':8,
+	   'I':9,'J':10,'K':11,'L':12,'M':13,'N':14,'Ñ':15,'O':16,
+	   'P':17,'Q':18,'R':19,'S':20,'T':21,'U':22,'V':23,'W':24,
+	   'X':25,'Y':26,'Z':27,'0':28,'1':29,'2':30,'3':31,'4':32,
+	   '5':33,'6':34,'7':35,'8':36,'9':37}
+
+dicI = {1:'A',2:'B',3:'C',4:'D',5:'E',6:'F',7:'G',8:'H',
+	    9:'I',10:'J',11:'K',12:'L',13:'M',14:'N',15:'Ñ',16:'O',
+	    17:'P',18:'Q',19:'R',20:'S',21:'T',22:'U',23:'V',24:'W',
+	    25:'X',26:'Y',27:'Z',28:'0',29:'1',30:'2',31:'3',32:'4',
+	    33:'5',34:'6',35:'7',36:'8',37:'9'}
+
+def egcdinv(a,b):
+	g = [b,a]
+	y = []
+	u = [1,0]
+	v = [0,1]
+	while g[-1] != 0:
+		y.append(g[-2]//g[-1])
+		g.append(g[-2]-(y[-1]*g[-1]))
+		u.append(u[-2]-(y[-1]*u[-1]))
+		v.append(v[-2]-(y[-1]*v[-1]))
+
+	if v[-2] < 0:
+		return v[-2] + b
+	else:
+		return v[-2]
+
+def primo(num):
+    if num < 1:
+        return False
+    elif num == 2:
+        return True
+    else:
+        for i in range(2, num):
+            if num % i == 0:
+                return False
+        return True  
+
+def obtener_clave(p):
+	try:
+		a = input("\nIngrese el valor de α: ")
+		print ("\n¿Desea ingresar el valor de su clave privada, o prefiere que sea asignada?")
+		priv = input("\n Seleccione una opción: \n\t x. Ingresar clave \n\t y. Asignar clave \n\n Ingrese su opción: ")
+		if priv == 'x' or priv == 'X':
+			l = input ("\t\nIngrese el valor de su clave privada: ")
+			b = (pow(int(a),int(l))) % p
+		elif priv == 'y' or priv == 'Y':
+			l = random.randint(int(a),p-1)
+			print("\t\nValor asignado (λ): ",l)
+			b = (pow(int(a),int(l))) % p
+		if primo(int(p)) == True and int(p) > 101:
+			b = (pow(int(a),int(l))) % p
+		print("\n\n\t Su clave pública (β) es: ",b,"\n")
+
+	except:
+		exit()
+
+def cifrado(palabra):
+	try:
+		suma = 0
+		numeros = []
+		total = []
+		tamano = len(palabra)
+		lista = list(palabra.upper())
+
+		for i in lista:
+			if i in dic:
+				numeros.append(dic[i])
+		for i in range(tamano):
+			total = numeros[i]*pow(37,i)
+			suma +=  total
+		print("\nValor de N: ",suma)
+
+		vp = input("\nIngrese el valor de p: ")
+		else:
+			va = input("\nIngrese el valor de α: ")
+			print ("\n¿Desea ingresar el valor de υ, o prefiere que sea asignada?")
+			priv = input("\n Seleccione una opción: \n h. Ingresar el valor \n i. Asignar valor \n\n Ingrese su opción: ")
+			if priv == 'h' or priv == 'H':
+				u = input ("\nIngrese el valor de υ: ")
+			elif priv == 'i' or priv == 'I':
+			
+				print("\nValor de υ asignado: ",u)
+			primer = pow(int(va),int(u))%int(vp)
+			vb = input("\nIngrese el valor de β: ")
+			segundo = (suma*pow(int(vb),int(u)))%int(vp)
+			return primer,segundo
+		
+	except Exception:
+		exit()
+
+def descifrado(n1,n2):
+	try:
+		l = input("\nIngrese el valor de λ: ")
+		vp = input("\nIngrese el valor de p: ")
+		n3 = pow(n1,int(l))%int(vp)
+		n4 = egcdinv(n3,int(vp))
+		nf = (n2*n4)%int(vp)
+		return nf
+	except Exception:
+		exit()
+
+def resto_descifrado(cifrado):
+	cocientes = []
+	residuos = []
+
+	while cocientes[-1]>38:
+		residuos.append(int(cocientes[-1]%37))
+		cocientes.append(int(cocientes[-1]/37))
+	residuos.append(cocientes[-1])
+	return residuos
+
+def final_descifrado(numeros):
+	final = []
+	for i in numeros:
+		final.append(dicI.get(i))
+	final.reverse()
+	return "".join(final)
+
+def main():
+	try:
+		print("\n\t\t *°*°*° ElGamal *°*°*°")
+		print("\nSeleccione una opción: ")
+		opcion = input("\n a. Creación de clave pública.\n b. Cifrado \n c. Descifrado \n Ingrese su opción: ")
+		os.system("clear")
+		if opcion == 'a' or opcion == 'A':
+			print("\n\t\t *°*°*° Creación de clave *°*°*°\n")
+			p = input("\n\nIngrese el valor de p: ")
+
+		elif opcion == 'b' or opcion == 'B':
+			print("\n\t\t *°*°*° Cifrado *°*°*°\n")
+			entrada = input("\n\nIngrese la palabra a cifrar: ")
+
+			print("\n\tValores para realizar el descifrado (N₁,N₂):",numeros,"\n")
+
+		elif opcion == 'c' or opcion == 'C':
+			print("\n\t\t *°*°*° Descifrado *°*°*°\n")
+			n1 = input("\nIngrese el valor N₁: ")
+			n2 = input("\nIngrese el valor N₂: ")
+			print("\n\tEl mensaje descifrado es:",final_descifrado(resto_descifrado(a)),"\n")
+
+		else:
+			print("\nOpción invalida")
+			exit()
+	
+	#except Exception:
+	#	exit()
+	
+	except KeyboardInterrupt:
+		print("\n")
+		exit()
+
+main()
