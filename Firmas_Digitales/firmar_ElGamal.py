@@ -11,7 +11,7 @@ import os
 import hashlib
 from base64 import b64encode, b64decode
 from datetime import datetime
-from Crypto.Util.Padding import pad
+from Crypto.Util.Padding import pad, unpad
 from Crypto.Cipher import AES
 
 #Se define alfabeto a utilzar en el cifrado
@@ -135,42 +135,106 @@ def cifrar(datos, nombre_archivo):
             if op == 'a':
                 clave = input("\n\tIngrese la clave a utilizar: ").encode('ascii')
                 key = obtener_hash("sha256", clave)[:16]
-                clave_compartir = "Clave de 128 bytes: " + clave.decode('ascii')
+                clave_compartir = "Clave de 128 bits: " + clave.decode('ascii')
                 break
             elif op == 'b':
                 clave = input("\n\tIngrese la clave a utilizar: ").encode('ascii')
                 key = obtener_hash("sha256", clave)[:24]
-                clave_compartir = "Clave de 192 bytes: " + clave.decode('ascii')
+                clave_compartir = "Clave de 192 bits: " + clave.decode('ascii')
                 break
             elif op == 'c':
                 clave = input("\n\tIngrese la clave a utilizar: ").encode('ascii')
                 key = obtener_hash("sha256", clave)
-                clave_compartir = "Clave de 256 bytes: " + clave.decode('ascii')
+                clave_compartir = "Clave de 256 bits: " + clave.decode('ascii')
                 break
             else:
                 print("\n\t\t*** Opción inválida, vuelva a intentar ***\n")        
     except UnicodeEncodeError:
-            print("\n\t *** Solo se permiten contraseñas con caracteres ASCII ***\n")
+            print("\n\t\t *** Solo se permiten contraseñas con caracteres ASCII ***\n")
             exit()
 
     #Obtenemos extensión del archivo
     extencion = nombre_archivo.split('.')
     if len(extencion) >= 2:
-        extension = extencion[-1]
+        extension = '.' + extencion[-1]
     else:
         extension = ''
 
-    nombre_guardado = nombre_archivo + "_cipher_" + datetime.now().strftime("%Y-%m-%d_%H-%M-%S"+'.'+extension) #Nombre del archivo cifrado
+    nombre_guardado = nombre_archivo + "_cipher_" + datetime.now().strftime("%Y-%m-%d_%H-%M-%S"+extension) #Nombre del archivo cifrado
     
     cipher = AES.new(key, AES.MODE_CBC) #Crea objeto de cifrado CBC, que usa AES como metodo de cifrado
     ct_bytes = cipher.encrypt(pad(datos, AES.block_size)) #Se cifran los datos en formato bytes
     iv = cipher.iv #Recuperamos vector inicial generado
 
-    iv_ct = b64encode(iv+ct_bytes) #Concatena iv con el mensaje cifrado
+    iv_ct = b64encode(iv+ct_bytes) #Concatena iv con el mensaje cifrado y codifica a base64
 
     guardar_archivo(nombre_guardado, iv_ct) #Guardamos datos cifrados
 
     return iv_ct, nombre_guardado, clave_compartir
+
+
+def descifrar(datos, nombre_archivo):
+    while True:
+        op = input("\n\tParece que el archivo comprobado está cifrado, ¿Desea descifrarlo? (Y/n): ").lower()
+
+        if op == 'n':
+            print("")
+            break
+        elif op == 'y':
+            print("\n\tIngrese la longitud de la clave a utilizar: \n")
+            print("\t    a. 128 bits")
+            print("\t    b. 192 bits")
+            print("\t    c. 256 bits")
+
+            sel = input("\n\t    Ingrese su opción: ").lower()
+            while sel < 'a' or sel > 'c':
+                print("\n\t\t*** Opción inválida, vuelva a intentar ***\n")   
+                sel = input("\n\t    Ingrese su opción: ").lower()
+
+            key = b''
+            try:
+                if sel == 'a':
+                    clave = input("\n\tIngrese la clave a utilizar: ").encode('ascii')
+                    key = obtener_hash("sha256", clave)[:16]
+                elif sel == 'b':
+                    clave = input("\n\tIngrese la clave a utilizar: ").encode('ascii')
+                    key = obtener_hash("sha256", clave)[:24]
+                elif sel == 'c':
+                    clave = input("\n\tIngrese la clave a utilizar: ").encode('ascii')
+                    key = obtener_hash("sha256", clave)
+
+            except UnicodeEncodeError:
+                print("\n\t *** Solo se permiten contraseñas con caracteres ASCII ***\n")
+                exit()
+
+            #Obtenemos extensión del archivo
+            nombre_separado = nombre_archivo.split('.')
+            if len(nombre_separado) >= 3:
+                extension = '.' + nombre_separado[-1]
+            else:
+                extension = ''
+
+            nombre_guardado = nombre_separado[0] + extension + "_decipher_" + datetime.now().strftime("%Y-%m-%d_%H-%M-%S"+extension) #Nombre del archivo cifrado
+            
+            iv_ct = b64decode(datos) #Concatena iv con el mensaje cifrado y codifica a base64
+            iv = iv_ct[:AES.block_size] #Separamos vector inicial
+            ct = iv_ct[AES.block_size:] #Separamos datos cifrados
+
+            cipher = AES.new(key, AES.MODE_CBC, iv) #Crea objeto de cifrado CBC, que usa AES como metodo de cifrado
+            try:
+                datos_descifrados = unpad(cipher.decrypt(ct), AES.block_size) #Se descifran los datos en formato bytes
+            except:
+                print("\n\t\t*** Clave inválida, favor de verificar ***\n")
+                exit()
+
+            guardar_archivo(nombre_guardado, datos_descifrados) #Guardamos datos cifrados
+
+            print("\n\tNombre del archivo descifrado: \n\n\t\t\t", nombre_guardado, "\n")
+
+            break
+        else:
+            print("\n\t\t*** Opción inválida, vuelva a intentar ***\n")  
+
 
 def firmar(hash_datos, nombre_archivo, clave_compartir):
     try:
@@ -266,10 +330,10 @@ def verificar(hash_datos_recividos):
     k2 = (a**M) % p
 
     if k1 == k2:
-        print("\n\t\t*** La firma es CORRECTA ***")
+        print("\n\t*** La firma es CORRECTA ***\n")
         return True
     else:
-        print("\n\t\t*** La firma No es CORRECTA, el archivo pudo ser modificado ***")
+        print("\n\t*** La firma No es CORRECTA, el archivo pudo ser modificado ***\n")
         return False
 
 
@@ -325,6 +389,7 @@ def main():
 
             if firma_valida == True and "cipher" in nombre_archivo:
                 descifrar(datos, nombre_archivo)
+                exit()
             else:
                 exit()
         else:
