@@ -244,6 +244,9 @@ def firmar(hash_datos, nombre_archivo, clave_compartir):
         a = int(input("\n\tIngrese el valor de α: ")) #Número aleatorio menor que P
         menor(a,p) #Comprueba que 'a' sea menor que 'p', sino termina programa
 
+        b = int(input("\n\tIngrese el valor de β: ")) #Clave pública
+        menor(b,p) #Comprueba que 'a' sea menor que 'p', sino termina programa
+
         l = int(input("\n\tIngrese el valor de λ: ")) #Clave privada
         menor(l,p) #Comprueba que la clave sea menor que p, sino termina programa.
         es_primo_mayor_101(l) #Comprueba que sea primo mayor a 101, sino termina programa.
