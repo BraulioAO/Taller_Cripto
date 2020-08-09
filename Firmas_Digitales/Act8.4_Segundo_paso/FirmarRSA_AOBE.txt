@@ -1,0 +1,5 @@
+* Nombre del archivo: 
+    U0NvbWVudGFyaW9fQU9CRS50eHRfY2lwaGVyXzIwMjAtMDgtMDlfMTYtMTQtMzIudHh0
+
+* Datos necesarios:
+    biA9IDcxMDE3MyAgICAgICAgZSA9IDY4MTY5ICAgICAgICByID0gNTcyNDcgICAgICAgIENsYXZlIHBhcmEgZGVzY2lmcmFkbyA9IGJyYXVfcGFzc18yNTYgICAgICAgIExvbmdpdHVkIGRlIGxhIGNsYXZlOiAyNTYgYml0cw==
